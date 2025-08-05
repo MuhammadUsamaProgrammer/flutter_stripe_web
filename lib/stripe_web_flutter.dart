@@ -1,3 +1,3 @@
-library flutter_stripe_web;
+library stripe_web_flutter;
 
 export 'src/stripe_web_service.dart';

@@ -10,13 +10,13 @@ A Flutter library for integrating Stripe payment processing in Flutter web appli
 
 ## Installation
 
-To use the `flutter_stripe_web` library in your Flutter web application, add the following dependency to your `pubspec.yaml` file:
+To use the `stripe_web_flutter` library in your Flutter web application, add the following dependency to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  flutter_stripe_web:
+  stripe_web_flutter:
     git:
-      url: https://github.com/MuhammadUsamaProgrammer/flutter_stripe_web.git
+      url: https://github.com/MuhammadUsamaProgrammer/stripe_web_flutter.git
 ```
 
 Replace `yourusername` with your GitHub username or the appropriate repository URL.
@@ -26,7 +26,7 @@ Replace `yourusername` with your GitHub username or the appropriate repository U
 ### Import the Library
 
 ```dart
-import 'package:flutter_stripe_web/flutter_stripe_web.dart';
+import 'package:stripe_web_flutter/stripe_web_flutter.dart';
 ```
 
 ### Create a Payment Intent
@@ -64,7 +64,7 @@ final paymentId = await stripeService.makePaymentService(
 
 ## Example
 
-An example application demonstrating the usage of the `flutter_stripe_web` library can be found in the `example` directory. To run the example, navigate to the `example` folder and execute:
+An example application demonstrating the usage of the `stripe_web_flutter` library can be found in the `example` directory. To run the example, navigate to the `example` folder and execute:
 
 ```bash
 flutter run -d chrome

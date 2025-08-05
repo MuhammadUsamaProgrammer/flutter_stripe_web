@@ -1,12 +1,12 @@
-name: flutter_stripe_web
+name: stripe_web_flutter
 description: A Flutter library for integrating Stripe payment processing in web applications.
-version: 0.1.0
-homepage: https://github.com/MuhammadUsamaProgrammer/flutter_stripe_web
-repository: https://github.com/MuhammadUsamaProgrammer/flutter_stripe_web
-issue_tracker: https://github.com/MuhammadUsamaProgrammer/flutter_stripe_web/issues
+version: 0.1.1
+homepage: https://github.com/MuhammadUsamaProgrammer/stripe_web_flutter
+repository: https://github.com/MuhammadUsamaProgrammer/stripe_web_flutter
+issue_tracker: https://github.com/MuhammadUsamaProgrammer/stripe_web_flutter/issues
 environment:
   sdk: ">=2.12.0 <4.0.0"
-  flutter: ">=1.10.0"
+  flutter: ">=1.20.0"
 dependencies:
   flutter:
     sdk: flutter
@@ -21,6 +21,6 @@ flutter:
     platforms:
       web:
         pluginClass: FlutterStripeWebPlugin
-        fileName: flutter_stripe_web.dart
+        fileName: stripe_web_flutter.dart
         dartPluginClass: FlutterStripeWeb
         webOnly: true

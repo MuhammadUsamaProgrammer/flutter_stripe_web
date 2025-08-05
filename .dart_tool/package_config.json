@@ -446,13 +446,13 @@
       "languageVersion": "3.4"
     },
     {
-      "name": "flutter_stripe_web",
+      "name": "stripe_web_flutter",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2025-08-05T10:57:20.987428Z",
+  "generated": "2025-08-05T11:08:39.543349Z",
   "generator": "pub",
   "generatorVersion": "3.4.3",
   "flutterRoot": "file:///C:/flutter%203.22.2",
