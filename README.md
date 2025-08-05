@@ -44,7 +44,7 @@ final paymentIntent = await stripeService.createPaymentIntent(
 
 ```dart
 final isSuccess = await stripeService.checkPaymentStatus(
-  payment_intent_id: paymentIntent['id'],
+  paymentIntentId: paymentIntent['id'],
   secretKey: 'sk_test_...',
 );
 ```

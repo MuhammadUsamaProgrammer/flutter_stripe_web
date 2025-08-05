@@ -42,10 +42,10 @@ class StripeWebService {
   }
 
   Future<bool> checkPaymentStatus(
-      {required String payment_intent_id, required String secretKey}) async {
+      {required String paymentIntentId, required String secretKey}) async {
     try {
       final url = Uri.parse(
-          "https://api.stripe.com/v1/payment_intents/$payment_intent_id");
+          "https://api.stripe.com/v1/payment_intents/$paymentIntentId");
 
       final response = await http.get(
         url,
@@ -80,6 +80,7 @@ class StripeWebService {
     required String currency,
     required String secretKey,
     required String publishableKey,
+    required String stripeWebviewUrl,
   }) async {
     final intent = await createPaymentIntent(
         amount: amountInCents, currency: currency, secretKey: secretKey);
@@ -88,16 +89,15 @@ class StripeWebService {
       return "";
     }
     final clientSecret = intent['client_secret'];
-    final paymentIntentId = intent['id'];
-    const stripeWebview =
-        "your_html_webview_url_here"; // Replace with your actual html webview URL will be like http://127.0.0.1:5500/web/stripe/stripe_webview.html
+    final paymentIntentId = intent[
+        'id']; // Replace with your actual html webview URL will be like http://127.0.0.1:5500/web/stripe/stripe_webview.html
     final viewId =
         'stripe-payment-view-[200~[201m${DateTime.now().millisecondsSinceEpoch}';
 
     ui.platformViewRegistry.registerViewFactory(viewId, (int viewId) {
       final iframe = html.IFrameElement()
         ..src =
-            '$stripeWebview?client_secret=$clientSecret&amount=$amountInCents&publishable_key=$publishableKey'
+            '$stripeWebviewUrl?client_secret=$clientSecret&amount=$amountInCents&publishable_key=$publishableKey'
         ..style.border = 'none'
         ..width = '100%'
         ..height = '100%';
