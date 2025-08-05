@@ -89,10 +89,9 @@ class StripeWebService {
       return "";
     }
     final clientSecret = intent['client_secret'];
-    final paymentIntentId = intent[
-        'id']; // Replace with your actual html webview URL will be like http://127.0.0.1:5500/web/stripe/stripe_webview.html
+    final paymentIntentId = intent['id'];
     final viewId =
-        'stripe-payment-view-[200~[201m${DateTime.now().millisecondsSinceEpoch}';
+        'stripe-payment-view-${DateTime.now().millisecondsSinceEpoch}';
 
     ui.platformViewRegistry.registerViewFactory(viewId, (int viewId) {
       final iframe = html.IFrameElement()
