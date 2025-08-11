@@ -29,26 +29,6 @@ Replace `yourusername` with your GitHub username or the appropriate repository U
 import 'package:stripe_web_flutter/stripe_web_flutter.dart';
 ```
 
-### Create a Payment Intent
-
-```dart
-final stripeService = StripeWebService();
-final paymentIntent = await stripeService.createPaymentIntent(
-  amount: '5000', // in cents
-  currency: 'usd',
-  secretKey: 'sk_test_...', // NEVER expose this in production frontend!
-);
-```
-
-### Check Payment Status
-
-```dart
-final isSuccess = await stripeService.checkPaymentStatus(
-  paymentIntentId: paymentIntent['id'],
-  secretKey: 'sk_test_...',
-);
-```
-
 ### Display the Payment Interface
 
 ```dart
@@ -59,6 +39,47 @@ final paymentId = await stripeService.makePaymentService(
   secretKey: 'sk_test_...', // NEVER expose this in production frontend!
   publishableKey: 'pk_test_...',
   stripeWebviewUrl: 'http://localhost:5500/web/stripe/stripe_webview.html', // or your deployed HTML
+);
+```
+
+### Important: Serving the `stripe_webview.html` File
+
+> **Note:**  
+> The `stripe_webview.html` file is included in this package under `example/web/stripe/stripe_webview.html`.  
+> To use the payment interface, you must serve this file from your own web server or hosting (e.g., GitHub Pages, Vercel, Netlify, or a local server) and provide its public URL to the `stripeWebviewUrl` parameter.
+>
+> **Recommended:**  
+> For easiest integration with Flutter web, copy `stripe_webview.html` into your own project's `/web/stripe/stripe_webview.html` path.  
+> This way, it will be available at `/stripe/stripe_webview.html` when you run or build your Flutter web app.
+>
+> **Example (local development):**
+> 1. Copy `stripe_webview.html` to your Flutter project's `web/stripe/stripe_webview.html`.
+> 2. Run your Flutter web app as usual:
+>    ```sh
+>    flutter run -d chrome
+>    ```
+> 3. Use `http://localhost:PORT/stripe/stripe_webview.html` as the `stripeWebviewUrl` (replace `PORT` with the port your app runs on, e.g. `5270`).
+>
+> For production, upload it to your hosting and use the public URL.
+
+
+### Check Payment Status
+
+```dart
+final isSuccess = await stripeService.checkPaymentStatus(
+  paymentIntentId: paymentIntent['id'],
+  secretKey: 'sk_test_...',
+);
+```
+
+### To create a just Payment Intent
+
+```dart
+final stripeService = StripeWebService();
+final paymentIntent = await stripeService.createPaymentIntent(
+  amount: '5000', // in cents
+  currency: 'usd',
+  secretKey: 'sk_test_...', // NEVER expose this in production frontend!
 );
 ```
 
